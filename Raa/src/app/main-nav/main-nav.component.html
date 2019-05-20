@@ -1,0 +1,18 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <mat-form-field>
+        <input matInput placeholder="search" type="text" #zoeker />
+      </mat-form-field>
+      <span *ngIf="(loggedInUser$ | async) as user">{{user}}
+        <button (click)="logout()" mat-flat-button data-cy="logout">
+          Logout
+        </button>
+      </span>
+      <span *ngIf="!(loggedInUser$ | async) as user">
+        <a mat-list-item [routerLink]="['login']">Login</a>
+        <a mat-list-item [routerLink]="['register']">Register</a>
+      </span>
+    </mat-toolbar>
+  </mat-sidenav-content>
+</mat-sidenav-container>
